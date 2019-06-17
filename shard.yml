@@ -1,0 +1,9 @@
+name: crgeo
+version: 0.1.0
+
+authors:
+  - Neznauy <shegosoft@gmail.com>
+
+crystal: 0.29.0
+
+license: MIT
