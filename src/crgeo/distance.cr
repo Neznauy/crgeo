@@ -6,10 +6,10 @@ module Crgeo
     getter lon2 : Float64
 
     def initialize(lat1 : Float64, lon1 : Float64, lat2 : Float64, lon2 : Float64)
-      @lat1 = Crgeo::Coordinates.grad_to_rad(lat1)
-      @lon1 = Crgeo::Coordinates.grad_to_rad(lon1)
-      @lat2 = Crgeo::Coordinates.grad_to_rad(lat2)
-      @lon2 = Crgeo::Coordinates.grad_to_rad(lon2)
+      @lat1 = Crgeo::Transfers.grad_to_rad(lat1)
+      @lon1 = Crgeo::Transfers.grad_to_rad(lon1)
+      @lat2 = Crgeo::Transfers.grad_to_rad(lat2)
+      @lon2 = Crgeo::Transfers.grad_to_rad(lon2)
     end
 
     def value : Float64

@@ -1,5 +1,5 @@
 module Crgeo
-  module Coordinates
+  module Transfers
     class RadToGrad
       getter rad : Float64
 
