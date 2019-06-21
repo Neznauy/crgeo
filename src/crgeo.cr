@@ -15,6 +15,10 @@ module Crgeo
     Crgeo::Normalization.new(lat1: lat1, lon1: lon1, lat2: lat2, lon2: lon2, lat: lat, lon: lon).value
   end
 
+  def self.angle(lat1 : Float64, lon1 : Float64, lat2 : Float64, lon2 : Float64, lat : Float64, lon : Float64) : Float64
+    Crgeo::Angle.new(lat1: lat1, lon1: lon1, lat2: lat2, lon2: lon2, lat: lat, lon: lon).value
+  end
+
   class InvalidCoordinates < Exception
   end
 end
