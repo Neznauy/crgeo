@@ -32,4 +32,26 @@ describe Crgeo do
       end
     end
   end
+
+  describe "#lat_distance" do
+    it { Crgeo.lat_distance.should be_close(111194.92, 0.01) }
+  end
+
+  describe "#lon_distance" do
+    context "when equator" do
+      it { Crgeo.lon_distance(0).should be_close(111194.92, 0.01) }
+    end
+
+    context "when South Pole" do
+      it { Crgeo.lon_distance(-90).should be_close(0, 0.01) }
+    end
+
+    context "when North Pole" do
+      it { Crgeo.lon_distance(90).should be_close(0, 0.01) }
+    end
+
+    context "when 60 lat" do
+      it { Crgeo.lon_distance(60).should be_close(55597.46, 0.01) }
+    end
+  end
 end

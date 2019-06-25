@@ -23,6 +23,14 @@ module Crgeo
     Crgeo::Bearing.new(lat1: lat1, lon1: lon1, lat2: lat2, lon2: lon2).value
   end
 
+  def self.lat_distance : Float64
+    2 * Math::PI * RADIUS / 360
+  end
+
+  def self.lon_distance(lat : Float64) : Float64
+    Math.cos(Crgeo::Transfers.grad_to_rad(lat)) * self.lat_distance
+  end
+
   class InvalidCoordinates < Exception
   end
 end
