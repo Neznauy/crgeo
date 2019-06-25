@@ -31,6 +31,10 @@ module Crgeo
     Math.cos(Crgeo::Transfers.grad_to_rad(lat)) * self.lat_distance
   end
 
+  def self.center_of(points : Array(NamedTuple(lat: Float64, lon: Float64))) : NamedTuple(lat: Float64, lon: Float64)
+    Crgeo::Center.new(points).value
+  end
+
   class InvalidCoordinates < Exception
   end
 end
