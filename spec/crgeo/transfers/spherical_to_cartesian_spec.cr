@@ -339,5 +339,13 @@ describe Crgeo::Transfers::SphericalToCartesian do
         end
       end
     end
+
+    context "when invalid coordinates" do
+      it do
+        expect_raises(Crgeo::InvalidCoordinates) do
+          Crgeo::Transfers::SphericalToCartesian.new(lat: 100, lon: 45).value
+        end
+      end
+    end
   end
 end

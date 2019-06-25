@@ -29,5 +29,13 @@ describe Crgeo::Distance do
         klass.value.should be_close(Math::PI * Crgeo::RADIUS, 0.01)
       end
     end
+
+    context "when invalid" do
+      it do
+        expect_raises(Crgeo::InvalidCoordinates) do
+          Crgeo::Distance.new(lat1: 0, lon1: 0, lat2: 0, lon2: 181).value
+        end
+      end
+    end
   end
 end

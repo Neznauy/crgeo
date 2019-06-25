@@ -22,5 +22,13 @@ describe Crgeo::Angle do
         klass.value.should be_close(Math::PI, 0.00001)
       end
     end
+
+    context "when invalid" do
+      it do
+        expect_raises(Crgeo::InvalidCoordinates) do
+          Crgeo::Angle.new(lat1: 91, lon1: 60, lat2: 0, lon2: 120, lat: 0, lon: 90).value
+        end
+      end
+    end
   end
 end

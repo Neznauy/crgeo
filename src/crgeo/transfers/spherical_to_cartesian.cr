@@ -5,19 +5,28 @@ module Crgeo
       getter lon : Float64
 
       def initialize(lat : Float64, lon : Float64)
-        @lat = Math::PI / 2 - Crgeo::Transfers.grad_to_rad(lat)
-        @lon = Crgeo::Transfers.grad_to_rad(lon)
+        @lat = lat
+        @lon = lon
       end
 
       #   y
       #   |__x
       #  /z
       def value : NamedTuple(x: Float64, y: Float64, z: Float64)
+        validate_coordinates!
+
+        prepared_lat = Math::PI / 2 - Crgeo::Transfers.grad_to_rad(lat)
+        prepared_lon = Crgeo::Transfers.grad_to_rad(lon)
+
         {
-          x: Crgeo::RADIUS * Math.sin(lat) * Math.sin(lon),
-          y: Crgeo::RADIUS * Math.cos(lat),
-          z: Crgeo::RADIUS * Math.sin(lat) * Math.cos(lon)
+          x: Crgeo::RADIUS * Math.sin(prepared_lat) * Math.sin(prepared_lon),
+          y: Crgeo::RADIUS * Math.cos(prepared_lat),
+          z: Crgeo::RADIUS * Math.sin(prepared_lat) * Math.cos(prepared_lon)
         }
+      end
+
+      private def validate_coordinates!
+        raise Crgeo::InvalidCoordinates.new unless Crgeo::Validations.spherical_coordinates(lat: lat, lon: lon)
       end
     end
   end

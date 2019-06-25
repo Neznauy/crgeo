@@ -29,5 +29,13 @@ describe Crgeo::Bearing do
         klass.value.should be_close(90, 0.01)
       end
     end
+
+    context "when invalid" do
+      it do
+        expect_raises(Crgeo::InvalidCoordinates) do
+          Crgeo::Bearing.new(lat1: 91, lon1: -73.993371, lat2: 0, lon2: -50).value
+        end
+      end
+    end
   end
 end

@@ -17,7 +17,7 @@ module Crgeo
     end
 
     def value : NamedTuple(lat: Float64, lon: Float64)
-      raise Crgeo::InvalidCoordinates.new if sphere_center_and_points_on_single_straight? || polar_to_equator_plane?
+      validate_coordinates!
 
       # coefficients of plane equation through the center of the sphere and 2 points
 
@@ -66,6 +66,14 @@ module Crgeo
 
     private def cartesian_n : NamedTuple(x: Float64, y: Float64, z: Float64)
       Crgeo::Transfers::SphericalToCartesian.new(lat: lat, lon: lon).value
+    end
+
+    private def validate_coordinates!
+      raise Crgeo::InvalidCoordinates.new unless Crgeo::Validations.spherical_coordinates(lat: lat, lon: lon)
+      raise Crgeo::InvalidCoordinates.new unless Crgeo::Validations.spherical_coordinates(lat: lat1, lon: lon1)
+      raise Crgeo::InvalidCoordinates.new unless Crgeo::Validations.spherical_coordinates(lat: lat2, lon: lon2)
+      raise Crgeo::InvalidCoordinates.new if sphere_center_and_points_on_single_straight?
+      raise Crgeo::InvalidCoordinates.new if polar_to_equator_plane?
     end
   end
 end

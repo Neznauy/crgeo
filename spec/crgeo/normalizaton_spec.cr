@@ -48,6 +48,14 @@ describe Crgeo::Normalization do
           end
         end
       end
-    end 
+    end
+
+    context "when invalid coordinates" do
+      it do
+        expect_raises(Crgeo::InvalidCoordinates) do
+          Crgeo::Normalization.new(lat1: 0, lon1: 0, lat2: 0, lon2: 181, lat: 46.571191, lon: -15.820338).value
+        end
+      end
+    end
   end
 end
