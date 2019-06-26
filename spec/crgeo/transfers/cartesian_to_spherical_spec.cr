@@ -401,5 +401,13 @@ describe Crgeo::Transfers::CartesianToSpherical do
         end
       end
     end
+
+    context "when invalid coordinates" do
+      it do
+        expect_raises(Crgeo::InvalidCoordinates) do
+          Crgeo::Transfers::CartesianToSpherical.new(x: 100, y: 100, z: 100).value
+        end
+      end
+    end
   end
 end
