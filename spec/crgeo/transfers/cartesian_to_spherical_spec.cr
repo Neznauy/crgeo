@@ -5,7 +5,7 @@ describe Crgeo::Transfers::CartesianToSpherical do
     context "when specific geographical points" do
       context "when zero point" do
         it do
-          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: 0.0, z: Crgeo::RADIUS).value
+          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: 0.0, z: Crgeo.radius).value
 
           value[:lat].should be_close(0, 0.000001)
           value[:lon].should be_close(0, 0.000001)
@@ -14,7 +14,7 @@ describe Crgeo::Transfers::CartesianToSpherical do
 
       context "when North Pole" do
         it do
-          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: Crgeo::RADIUS, z: 0.0).value
+          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: Crgeo.radius, z: 0.0).value
 
           value[:lat].should be_close(90, 0.000001)
           value[:lon].should be_close(0, 0.000001)
@@ -23,7 +23,7 @@ describe Crgeo::Transfers::CartesianToSpherical do
 
       context "when South Pole" do
         it do
-          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: -Crgeo::RADIUS, z: 0.0).value
+          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: -Crgeo.radius, z: 0.0).value
 
           value[:lat].should be_close(-90, 0.000001)
           value[:lon].should be_close(0, 0.000001)
@@ -35,9 +35,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when 30 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS / 2,
+            x: Crgeo.radius / 2,
             y: 0.0,
-            z: Math.sqrt(3) * Crgeo::RADIUS / 2
+            z: Math.sqrt(3) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -48,9 +48,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when 45 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Math.sqrt(2) * Crgeo::RADIUS / 2,
+            x: Math.sqrt(2) * Crgeo.radius / 2,
             y: 0.0,
-            z: Math.sqrt(2) * Crgeo::RADIUS / 2
+            z: Math.sqrt(2) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -61,9 +61,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when 60 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS * Math.sqrt(3) / 2,
+            x: Crgeo.radius * Math.sqrt(3) / 2,
             y: 0.0,
-            z: Crgeo::RADIUS / 2
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -73,7 +73,7 @@ describe Crgeo::Transfers::CartesianToSpherical do
 
       context "when 90 lon" do
         it do
-          value = Crgeo::Transfers::CartesianToSpherical.new(x: Crgeo::RADIUS, y: 0.0, z: 0.0).value
+          value = Crgeo::Transfers::CartesianToSpherical.new(x: Crgeo.radius, y: 0.0, z: 0.0).value
 
           value[:lat].should be_close(0, 0.000001)
           value[:lon].should be_close(90, 0.000001)
@@ -83,9 +83,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when 120 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Math.sqrt(3) * Crgeo::RADIUS / 2,
+            x: Math.sqrt(3) * Crgeo.radius / 2,
             y: 0.0,
-            z: -Crgeo::RADIUS / 2
+            z: -Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -96,9 +96,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when 135 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Math.sqrt(2) * Crgeo::RADIUS / 2,
+            x: Math.sqrt(2) * Crgeo.radius / 2,
             y: 0.0,
-            z: -Math.sqrt(2) * Crgeo::RADIUS / 2
+            z: -Math.sqrt(2) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -109,9 +109,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when 150 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS / 2,
+            x: Crgeo.radius / 2,
             y: 0.0,
-            z: -Math.sqrt(3) * Crgeo::RADIUS / 2
+            z: -Math.sqrt(3) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -121,7 +121,7 @@ describe Crgeo::Transfers::CartesianToSpherical do
 
       context "when 180 lon" do
         it do
-          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: 0.0, z: -Crgeo::RADIUS).value
+          value = Crgeo::Transfers::CartesianToSpherical.new(x: 0.0, y: 0.0, z: -Crgeo.radius).value
 
           value[:lat].should be_close(0, 0.000001)
           value[:lon].should be_close(180, 0.000001)
@@ -131,9 +131,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when -30 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS / 2,
+            x: -Crgeo.radius / 2,
             y: 0.0,
-            z: Math.sqrt(3) * Crgeo::RADIUS / 2
+            z: Math.sqrt(3) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -144,9 +144,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when -45 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Math.sqrt(2) * Crgeo::RADIUS / 2,
+            x: -Math.sqrt(2) * Crgeo.radius / 2,
             y: 0.0,
-            z: Math.sqrt(2) * Crgeo::RADIUS / 2
+            z: Math.sqrt(2) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -157,9 +157,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when -60 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS * Math.sqrt(3) / 2,
+            x: -Crgeo.radius * Math.sqrt(3) / 2,
             y: 0.0,
-            z: Crgeo::RADIUS / 2
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -169,7 +169,7 @@ describe Crgeo::Transfers::CartesianToSpherical do
 
       context "when -90 lon" do
         it do
-          value = Crgeo::Transfers::CartesianToSpherical.new(x: -Crgeo::RADIUS, y: 0.0, z: 0.0).value
+          value = Crgeo::Transfers::CartesianToSpherical.new(x: -Crgeo.radius, y: 0.0, z: 0.0).value
 
           value[:lat].should be_close(0, 0.000001)
           value[:lon].should be_close(-90, 0.000001)
@@ -179,9 +179,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when -120 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Math.sqrt(3) * Crgeo::RADIUS / 2,
+            x: -Math.sqrt(3) * Crgeo.radius / 2,
             y: 0.0,
-            z: -Crgeo::RADIUS / 2
+            z: -Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -192,9 +192,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when -135 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Math.sqrt(2) * Crgeo::RADIUS / 2,
+            x: -Math.sqrt(2) * Crgeo.radius / 2,
             y: 0.0,
-            z: -Math.sqrt(2) * Crgeo::RADIUS / 2
+            z: -Math.sqrt(2) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -205,9 +205,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when -150 lon" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS / 2,
+            x: -Crgeo.radius / 2,
             y: 0.0,
-            z: -Math.sqrt(3) * Crgeo::RADIUS / 2
+            z: -Math.sqrt(3) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(0, 0.000001)
@@ -221,8 +221,8 @@ describe Crgeo::Transfers::CartesianToSpherical do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
             x: 0.0,
-            y: Crgeo::RADIUS / 2,
-            z: Math.sqrt(3) * Crgeo::RADIUS / 2
+            y: Crgeo.radius / 2,
+            z: Math.sqrt(3) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(30, 0.000001)
@@ -234,8 +234,8 @@ describe Crgeo::Transfers::CartesianToSpherical do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
             x: 0.0,
-            y: Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: Math.sqrt(2) * Crgeo::RADIUS / 2
+            y: Math.sqrt(2) * Crgeo.radius / 2,
+            z: Math.sqrt(2) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(45, 0.000001)
@@ -247,8 +247,8 @@ describe Crgeo::Transfers::CartesianToSpherical do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
             x: 0.0,
-            y: Math.sqrt(3) * Crgeo::RADIUS / 2,
-            z: Crgeo::RADIUS / 2
+            y: Math.sqrt(3) * Crgeo.radius / 2,
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(60, 0.000001)
@@ -260,8 +260,8 @@ describe Crgeo::Transfers::CartesianToSpherical do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
             x: 0.0,
-            y: -Crgeo::RADIUS / 2,
-            z: Math.sqrt(3) * Crgeo::RADIUS / 2
+            y: -Crgeo.radius / 2,
+            z: Math.sqrt(3) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-30, 0.000001)
@@ -273,8 +273,8 @@ describe Crgeo::Transfers::CartesianToSpherical do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
             x: 0.0,
-            y: -Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: Math.sqrt(2) * Crgeo::RADIUS / 2
+            y: -Math.sqrt(2) * Crgeo.radius / 2,
+            z: Math.sqrt(2) * Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-45, 0.000001)
@@ -286,8 +286,8 @@ describe Crgeo::Transfers::CartesianToSpherical do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
             x: 0.0,
-            y: -Math.sqrt(3) * Crgeo::RADIUS / 2,
-            z: Crgeo::RADIUS / 2
+            y: -Math.sqrt(3) * Crgeo.radius / 2,
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-60, 0.000001)
@@ -300,9 +300,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat 45, lon 45" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS / 2,
-            y: Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: Crgeo::RADIUS / 2
+            x: Crgeo.radius / 2,
+            y: Math.sqrt(2) * Crgeo.radius / 2,
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(45, 0.000001)
@@ -313,9 +313,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat 45, lon 135" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS / 2,
-            y: Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: -Crgeo::RADIUS / 2
+            x: Crgeo.radius / 2,
+            y: Math.sqrt(2) * Crgeo.radius / 2,
+            z: -Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(45, 0.000001)
@@ -326,9 +326,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat 45, lon -45" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS / 2,
-            y: Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: Crgeo::RADIUS / 2
+            x: -Crgeo.radius / 2,
+            y: Math.sqrt(2) * Crgeo.radius / 2,
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(45, 0.000001)
@@ -339,9 +339,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat 45, lon -135" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS / 2,
-            y: Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: -Crgeo::RADIUS / 2
+            x: -Crgeo.radius / 2,
+            y: Math.sqrt(2) * Crgeo.radius / 2,
+            z: -Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(45, 0.000001)
@@ -352,9 +352,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat -45, lon 45" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS / 2,
-            y: -Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: Crgeo::RADIUS / 2
+            x: Crgeo.radius / 2,
+            y: -Math.sqrt(2) * Crgeo.radius / 2,
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-45, 0.000001)
@@ -365,9 +365,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat -45, lon 135" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: Crgeo::RADIUS / 2,
-            y: -Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: -Crgeo::RADIUS / 2
+            x: Crgeo.radius / 2,
+            y: -Math.sqrt(2) * Crgeo.radius / 2,
+            z: -Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-45, 0.000001)
@@ -378,9 +378,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat -45, lon -45" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS / 2,
-            y: -Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: Crgeo::RADIUS / 2
+            x: -Crgeo.radius / 2,
+            y: -Math.sqrt(2) * Crgeo.radius / 2,
+            z: Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-45, 0.000001)
@@ -391,9 +391,9 @@ describe Crgeo::Transfers::CartesianToSpherical do
       context "when lat -45, lon -135" do
         it do
           value = Crgeo::Transfers::CartesianToSpherical.new(
-            x: -Crgeo::RADIUS / 2,
-            y: -Math.sqrt(2) * Crgeo::RADIUS / 2,
-            z: -Crgeo::RADIUS / 2
+            x: -Crgeo.radius / 2,
+            y: -Math.sqrt(2) * Crgeo.radius / 2,
+            z: -Crgeo.radius / 2
           ).value
 
           value[:lat].should be_close(-45, 0.000001)

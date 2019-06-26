@@ -37,7 +37,7 @@ module Crgeo
 
       # coefficient of parametric equation of straight through center of the sphere and normal's base
 
-      kn = Crgeo::RADIUS / Math.sqrt(xn**2 + yn**2 + zn**2)
+      kn = Crgeo.radius / Math.sqrt(xn**2 + yn**2 + zn**2)
 
       # normalized coordinates
 

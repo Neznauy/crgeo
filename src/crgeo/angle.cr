@@ -39,7 +39,7 @@ module Crgeo
         lon1: Crgeo::Transfers.rad_to_grad(lon_1),
         lat2: Crgeo::Transfers.rad_to_grad(lat_2),
         lon2: Crgeo::Transfers.rad_to_grad(lon_2)
-      ).value / Crgeo::RADIUS
+      ).value / Crgeo.radius
     end
 
     private def validate_coordinates!

@@ -16,7 +16,7 @@ module Crgeo
       def valid? : Bool
         coordinates_summ = Math.sqrt(x**2 + y**2 + z**2)
 
-        ((Crgeo::RADIUS - precision)..(Crgeo::RADIUS + precision)).includes? coordinates_summ
+        ((Crgeo.radius - precision)..(Crgeo.radius + precision)).includes? coordinates_summ
       end
     end
   end

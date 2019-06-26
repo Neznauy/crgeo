@@ -21,7 +21,7 @@ module Crgeo
       c = points_as_cartesian.count { true }
       average = {x: x / c, y: y / c, z: z / c}
 
-      k = Crgeo::RADIUS / Math.sqrt(average[:x]**2 + average[:y]**2 + average[:z]**2)
+      k = Crgeo.radius / Math.sqrt(average[:x]**2 + average[:y]**2 + average[:z]**2)
       center = Crgeo::Transfers.cartesian_to_spherical(x: k * average[:x], y: k * average[:y], z: k * average[:z])
 
       {

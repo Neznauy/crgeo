@@ -1,8 +1,8 @@
 require "./spec_helper"
 
 describe Crgeo do
-  describe "RADIUS" do
-    it { Crgeo::RADIUS.should eq 6_371_000 }
+  describe "EARTH_RADIUS" do
+    it { Crgeo::EARTH_RADIUS.should eq 6_371_000 }
   end
 
   describe "#distance_between" do
@@ -22,13 +22,13 @@ describe Crgeo do
 
     context "half of meridian" do
       it do
-        Crgeo.distance_between(lat1: 0, lon1: 0, lat2: 90, lon2: 0).should be_close(Math::PI * Crgeo::RADIUS / 2, 0.01)
+        Crgeo.distance_between(lat1: 0, lon1: 0, lat2: 90, lon2: 0).should be_close(Math::PI * Crgeo.radius / 2, 0.01)
       end
     end
 
     context "half of equator" do
       it do
-        Crgeo.distance_between(lat1: 0, lon1: 0, lat2: 0, lon2: 180).should be_close(Math::PI * Crgeo::RADIUS, 0.01)
+        Crgeo.distance_between(lat1: 0, lon1: 0, lat2: 0, lon2: 180).should be_close(Math::PI * Crgeo.radius, 0.01)
       end
     end
   end
@@ -52,6 +52,19 @@ describe Crgeo do
 
     context "when 60 lat" do
       it { Crgeo.lon_distance(60).should be_close(55597.46, 0.01) }
+    end
+  end
+
+  describe "#radius" do
+    context "when default" do
+      it { Crgeo.radius.should eq 6_371_000 }
+    end
+
+    context "when set" do
+      it do 
+        Crgeo.radius = 100.0
+        Crgeo.radius.should eq 100
+      end
     end
   end
 end

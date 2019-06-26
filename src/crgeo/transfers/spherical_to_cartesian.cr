@@ -19,9 +19,9 @@ module Crgeo
         prepared_lon = Crgeo::Transfers.grad_to_rad(lon)
 
         {
-          x: Crgeo::RADIUS * Math.sin(prepared_lat) * Math.sin(prepared_lon),
-          y: Crgeo::RADIUS * Math.cos(prepared_lat),
-          z: Crgeo::RADIUS * Math.sin(prepared_lat) * Math.cos(prepared_lon)
+          x: Crgeo.radius * Math.sin(prepared_lat) * Math.sin(prepared_lon),
+          y: Crgeo.radius * Math.cos(prepared_lat),
+          z: Crgeo.radius * Math.sin(prepared_lat) * Math.cos(prepared_lon)
         }
       end
 

@@ -26,7 +26,7 @@ module Crgeo
       a = (Math.sin(delta_lat / 2))**2 + Math.cos(prepared_lat1) * (Math.sin(delta_lon / 2))**2 * Math.cos(prepared_lat2)
       c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 
-      c * Crgeo::RADIUS
+      c * Crgeo.radius
     end
 
     private def validate_coordinates!

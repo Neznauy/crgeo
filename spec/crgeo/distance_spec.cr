@@ -19,14 +19,14 @@ describe Crgeo::Distance do
     context "half of meridian" do
       it do
         klass = Crgeo::Distance.new(lat1: 0, lon1: 0, lat2: 90, lon2: 0)
-        klass.value.should be_close(Math::PI * Crgeo::RADIUS / 2, 0.01)
+        klass.value.should be_close(Math::PI * Crgeo.radius / 2, 0.01)
       end
     end
 
     context "half of equator" do
       it do
         klass = Crgeo::Distance.new(lat1: 0, lon1: 0, lat2: 0, lon2: 180)
-        klass.value.should be_close(Math::PI * Crgeo::RADIUS, 0.01)
+        klass.value.should be_close(Math::PI * Crgeo.radius, 0.01)
       end
     end
 
