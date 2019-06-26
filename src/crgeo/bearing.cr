@@ -15,17 +15,17 @@ module Crgeo
     def value : Float64
       validate_coordinates!
 
-      prepared_lat1 = Crgeo::Transfers.grad_to_rad(lat1)
-      prepared_lon1 = Crgeo::Transfers.grad_to_rad(lon1)
-      prepared_lat2 = Crgeo::Transfers.grad_to_rad(lat2)
-      prepared_lon2 = Crgeo::Transfers.grad_to_rad(lon2)
+      prepared_lat1 = Crgeo::Transfers.deg_to_rad(lat1)
+      prepared_lon1 = Crgeo::Transfers.deg_to_rad(lon1)
+      prepared_lat2 = Crgeo::Transfers.deg_to_rad(lat2)
+      prepared_lon2 = Crgeo::Transfers.deg_to_rad(lon2)
 
       delta_lon = prepared_lon2 - prepared_lon1
 
       x = Math.cos(prepared_lat1) * Math.sin(prepared_lat2) - Math.sin(prepared_lat1) * Math.cos(prepared_lat2) * Math.cos(delta_lon)
       y = Math.sin(delta_lon) * Math.cos(prepared_lat2)
 
-      bearing = Crgeo::Transfers.rad_to_grad(Math.atan2(y,x))
+      bearing = Crgeo::Transfers.rad_to_deg(Math.atan2(y,x))
 
       bearing < 0 ? bearing + 360 : bearing
     end

@@ -38,7 +38,7 @@ module Crgeo
   end
 
   def self.lon_distance(lat : Float64) : Float64
-    Math.cos(Crgeo::Transfers.grad_to_rad(lat)) * self.lat_distance
+    Math.cos(Crgeo::Transfers.deg_to_rad(lat)) * self.lat_distance
   end
 
   def self.center_of(points : Array(NamedTuple(lat: Float64, lon: Float64))) : NamedTuple(lat: Float64, lon: Float64)

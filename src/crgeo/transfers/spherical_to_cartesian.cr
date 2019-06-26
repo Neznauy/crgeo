@@ -15,8 +15,8 @@ module Crgeo
       def value : NamedTuple(x: Float64, y: Float64, z: Float64)
         validate_coordinates!
 
-        prepared_lat = Math::PI / 2 - Crgeo::Transfers.grad_to_rad(lat)
-        prepared_lon = Crgeo::Transfers.grad_to_rad(lon)
+        prepared_lat = Math::PI / 2 - Crgeo::Transfers.deg_to_rad(lat)
+        prepared_lon = Crgeo::Transfers.deg_to_rad(lon)
 
         {
           x: Crgeo.radius * Math.sin(prepared_lat) * Math.sin(prepared_lon),

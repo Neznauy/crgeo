@@ -25,15 +25,15 @@ module Crgeo
       center = Crgeo::Transfers.cartesian_to_spherical(x: k * average[:x], y: k * average[:y], z: k * average[:z])
 
       {
-        lat: Crgeo::Transfers.rad_to_grad(center[:lat]),
-        lon: Crgeo::Transfers.rad_to_grad(center[:lon])
+        lat: Crgeo::Transfers.rad_to_deg(center[:lat]),
+        lon: Crgeo::Transfers.rad_to_deg(center[:lon])
       }
     end
 
     private def point_as_rads(point : NamedTuple(lat: Float64, lon: Float64)) : NamedTuple(lat: Float64, lon: Float64)
       {
-        lat: Crgeo::Transfers.grad_to_rad(point[:lat]),
-        lon: Crgeo::Transfers.grad_to_rad(point[:lon])
+        lat: Crgeo::Transfers.deg_to_rad(point[:lat]),
+        lon: Crgeo::Transfers.deg_to_rad(point[:lon])
       }
     end
 

@@ -19,12 +19,12 @@ module Crgeo
     def value : Float64
       validate_coordinates!
 
-      prepared_lat1 = Crgeo::Transfers.grad_to_rad(lat1)
-      prepared_lon1 = Crgeo::Transfers.grad_to_rad(lon1)
-      prepared_lat2 = Crgeo::Transfers.grad_to_rad(lat2)
-      prepared_lon2 = Crgeo::Transfers.grad_to_rad(lon2)
-      prepared_lat  = Crgeo::Transfers.grad_to_rad(lat)
-      prepared_lon  = Crgeo::Transfers.grad_to_rad(lon)
+      prepared_lat1 = Crgeo::Transfers.deg_to_rad(lat1)
+      prepared_lon1 = Crgeo::Transfers.deg_to_rad(lon1)
+      prepared_lat2 = Crgeo::Transfers.deg_to_rad(lat2)
+      prepared_lon2 = Crgeo::Transfers.deg_to_rad(lon2)
+      prepared_lat  = Crgeo::Transfers.deg_to_rad(lat)
+      prepared_lon  = Crgeo::Transfers.deg_to_rad(lon)
 
       a = central_angle(lat_1: prepared_lat1, lon_1: prepared_lon1, lat_2: prepared_lat2, lon_2: prepared_lon2)
       b = central_angle(lat_1: prepared_lat, lon_1: prepared_lon, lat_2: prepared_lat1, lon_2: prepared_lon1)
@@ -35,10 +35,10 @@ module Crgeo
 
     private def central_angle(lat_1 : Float64, lon_1 : Float64, lat_2 : Float64, lon_2 : Float64) : Float64
       Crgeo::Distance.new(
-        lat1: Crgeo::Transfers.rad_to_grad(lat_1),
-        lon1: Crgeo::Transfers.rad_to_grad(lon_1),
-        lat2: Crgeo::Transfers.rad_to_grad(lat_2),
-        lon2: Crgeo::Transfers.rad_to_grad(lon_2)
+        lat1: Crgeo::Transfers.rad_to_deg(lat_1),
+        lon1: Crgeo::Transfers.rad_to_deg(lon_1),
+        lat2: Crgeo::Transfers.rad_to_deg(lat_2),
+        lon2: Crgeo::Transfers.rad_to_deg(lon_2)
       ).value / Crgeo.radius
     end
 

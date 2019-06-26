@@ -15,8 +15,8 @@ module Crgeo
         validate_coordinates!
 
         {
-          lat: Crgeo::Transfers.rad_to_grad(Math::PI / 2 - Math.acos(y / Math.sqrt(x**2 + y**2 + z**2))),
-          lon: Crgeo::Transfers.rad_to_grad(Math.atan2(x, z))
+          lat: Crgeo::Transfers.rad_to_deg(Math::PI / 2 - Math.acos(y / Math.sqrt(x**2 + y**2 + z**2))),
+          lon: Crgeo::Transfers.rad_to_deg(Math.atan2(x, z))
         }
       end
 

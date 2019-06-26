@@ -15,10 +15,10 @@ module Crgeo
     def value : Float64
       validate_coordinates!
 
-      prepared_lat1 = Crgeo::Transfers.grad_to_rad(lat1)
-      prepared_lon1 = Crgeo::Transfers.grad_to_rad(lon1)
-      prepared_lat2 = Crgeo::Transfers.grad_to_rad(lat2)
-      prepared_lon2 = Crgeo::Transfers.grad_to_rad(lon2)
+      prepared_lat1 = Crgeo::Transfers.deg_to_rad(lat1)
+      prepared_lon1 = Crgeo::Transfers.deg_to_rad(lon1)
+      prepared_lat2 = Crgeo::Transfers.deg_to_rad(lat2)
+      prepared_lon2 = Crgeo::Transfers.deg_to_rad(lon2)
 
       delta_lat = prepared_lat2 - prepared_lat1
       delta_lon = prepared_lon2 - prepared_lon1

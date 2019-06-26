@@ -1,6 +1,6 @@
 module Crgeo
   module Transfers
-    class RadToGrad
+    class RadToDeg
       getter rad : Float64
 
       def initialize(rad : Float64)
